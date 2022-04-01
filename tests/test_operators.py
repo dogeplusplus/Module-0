@@ -147,6 +147,7 @@ def test_other(x):
     """
     assert mul(x, 0) == 0
     assert mul(x, 1) == x
+    assert sigmoid(0) == 0.5
 
 
 
