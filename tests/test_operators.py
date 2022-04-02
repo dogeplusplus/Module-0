@@ -105,9 +105,9 @@ def test_sigmoid(a):
     * it is  strictly increasing.
     """
     assert 0 <= sigmoid(a) <= 1
-    assert 1 - sigmoid(a)  == -sigmoid(a)
+    assert_close(1 - sigmoid(a), sigmoid(-a))
     assert sigmoid(0) == 0.5
-    assert sigmoid(a) < sigmoid(a + 1)
+    assert sigmoid(a) <= sigmoid(a + 1)
 
 
 @pytest.mark.task0_2
@@ -136,7 +136,7 @@ def test_distribute(x, y, z):
     Write a test that ensures that your operators distribute, i.e.
     :math:`z \times (x + y) = z \times x + z \times y`
     """
-    assert mul(z, add(x, y)) == add(mul(z, x), mul(z, y))
+    assert_close(mul(z, add(x, y)), add(mul(z, x), mul(z, y)))
 
 
 @pytest.mark.task0_2
@@ -176,8 +176,7 @@ def test_sum_distribute(ls1, ls2):
     Write a test that ensures that the sum of `ls1` plus the sum of `ls2`
     is the same as the sum of each element of `ls1` plus each element of `ls2`.
     """
-    # TODO: Implement for Task 0.3.
-    raise NotImplementedError('Need to implement for Task 0.3')
+    assert_close(sum(addLists(ls1, ls2)), sum(ls1) + sum(ls2))
 
 
 @pytest.mark.task0_3
